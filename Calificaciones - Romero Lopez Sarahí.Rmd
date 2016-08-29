@@ -1,0 +1,28 @@
+---
+title: "Kardex (Calificaciones)"
+author: "Sarahí Romero López"
+date: "29 de agosto de 2016"
+output: html_document
+---
+
+#Primer Semestre
+
+Lista de materias/Calificación:
+
+* Matemáticas Básicas: 7
+* Problemas de Matemáticas Básicas: 7
+* Conceptos de Cálculo: 9
+* Programación Actuarial I: 10
+* Introducción a la Profesión Actuarial: 9
+* DHPC: 10
+
+#Segundo Semestre 
+
+Lista de materias/Calificación:
+
+* Programación Actuarial II: 6
+* Geometría: 10
+* Microeconomía: 8 
+* Teoría del Interés I: 6 
+* Teoría de Ecuaciones: NA
+* Cálculo Diferencial: NA
