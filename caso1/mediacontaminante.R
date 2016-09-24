@@ -1,4 +1,3 @@
-
 mediacontaminante<-function(directorio="C:/Users/Sarahí/Documents/specdata",contaminante="sulfate",id=1:332){
   setwd(directorio)
   sumatotal<-0
