@@ -1,4 +1,4 @@
-rankhospitalcompleto<-function(resultado,num="mejor"){
+rankingcompleto<-function(resultado,num="mejor"){
     setwd("C:/Users/Sarahí/Documents/Hospitales")
     lectura <- read.csv("outcome-of-care-measures.csv",
                         colClasses = "character")
@@ -23,8 +23,8 @@ rankhospitalcompleto<-function(resultado,num="mejor"){
         rank<-outcome[order(as.numeric(outcome[[3]]),outcome[[1]]),]
         
         if (num=="peor"){
-            mortal<-rank[which.max(rank[[3]]),]
-            phospital<-mortal$Hospital.Name
+            mortal<-rank[order(as.numeric(rank[[3]]),decreasing = T),]
+            phospital<-mortal[1,1]
             listah<-c(listah,phospital)
         }else if(num=="mejor"){
             mhospital<-rank[1,1]

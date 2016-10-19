@@ -19,7 +19,7 @@ mejor <-function(estado, resultado){
         
      outcome<-subset(noutcome,noutcome$State==estado 
                     & !noutcome[[3]]=="Not Available")
-    mortal<-outcome[which.min(outcome[[3]]),]
-    hospital<-mortal$Hospital.Name
+    mortal<-outcome[order(as.numeric(outcome[[3]]),outcome[[1]]),]
+    hospital<-mortal[1,1]
     hospital
 }

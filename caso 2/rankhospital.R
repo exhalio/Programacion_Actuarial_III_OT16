@@ -22,8 +22,8 @@ rankhospital<-function(estado,resultado,num="mejor"){
     rank<-outcome[order(as.numeric(outcome[[3]]),outcome[[1]]),]
     
         if (num=="peor"){
-            mortal<-rank[which.max(rank[[3]]),]
-            phospital<-mortal$Hospital.Name
+            mortal<- rank[order(as.numeric(rank[[3]]),decreasing = T),]
+            phospital<-mortal[1,1]
             phospital
         }else if(num=="mejor"){
             print(rank[1,1])
