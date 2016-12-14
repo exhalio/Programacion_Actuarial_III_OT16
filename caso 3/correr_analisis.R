@@ -1,4 +1,4 @@
-setwd("C:/Users/SarahÃ­/Desktop/UCI HAR Dataset")
+setwd("C:/Users/Sarahí/Desktop/UCI HAR Dataset")
 xtrain<-read.table("./train/X_train.txt")
 xtest<-read.table("./test/X_test.txt")
 juntos <- rbind(xtrain, xtest)

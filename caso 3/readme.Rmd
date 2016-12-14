@@ -1,6 +1,6 @@
 ---
 title: "Caso 3: Reconocimiento de Actividad Humana con Celulares"
-author: "SarahÃ­ Romero"
+author: "Sarahí Romero"
 date: "14 de diciembre de 2016"
 output: pdf_document
 ---
@@ -9,41 +9,40 @@ output: pdf_document
 ##Programación Actuarial lll
 ##Equipo: 
 
-*Ayala Vargas Daniela
-*Gatica Cabrera María del Carmen 
-*Reynaga Gil Daniel
-*Romero López Sarahí 
+* Ayala Vargas Daniela
+* Gatica Cabrera María del Carmen 
+* Reynaga Gil Daniel
+* Romero López Sarahí 
+
 #Caso: Reconocimiento de Actividad Humana con Celulares
 
-#IntroducciÃ³n
+#Introducciónn
 
-CompaÃ±Ã­as como Fitbit, Nike y Jawbone Up compiten para desarrollar los algoritmos mÃ¡s avanzados para atraer a nuevos usuarios. Los datos de este caso provienen de los acelerÃ³metros ubicados en celulares Samsung Galaxy S.
+Compañíasas como Fitbit, Nike y Jawbone Up compiten para desarrollar los algoritmos máss avanzados para atraer a nuevos usuarios. Los datos de este caso provienen de los acelerómetros ubicados en celulares Samsung Galaxy S.
 
-Una mayor descripciÃ³n de la base de datos y su recopilaciÃ³n puede ser hallada en la siguiente liga:
+Una mayor descripción de la base de datos y su recopilación puede ser hallada en la siguiente liga:
 
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
-El propÃ³sito de este proyecto es demostrar la habilidad para recolectar, trabajar y limpiar bases de datos. El objetivo es preparar un conjunto ordenado de informaciÃ³n que pueda ser trabajado en anÃ¡lisis posteriores.
+El propósito de este proyecto es demostrar la habilidad para recolectar, trabajar y limpiar bases de datos. El objetivo es preparar un conjunto ordenado de información que pueda ser trabajado en análisis posteriores.
 
 El código correr_analisis.R hace lo siguiente:
 
-*Une los datos de test con los de training, para crear un solo conjunto de datos.
+* Une los datos de test con los de training, para crear un solo conjunto de datos.
 
-Primero, lee los archivos de test y training, a continuaciÃ³n une ambos elementos
-en un nuevo conjunto.
+Primero, lee los archivos de test y training, a continuación une ambos elementos en un nuevo conjunto.
 
 ```xtrain<-read.table("./train/X_train.txt")
 xtest<-read.table("./test/X_test.txt")
 juntos <- rbind(xtrain, xtest)
 rm(xtrain,xtest)
 ```
-Remueve elementos que ya no serÃ¡n de utilidad. 
+Remueve elementos que ya no serán de utilidad. 
 
-*Extrae Ãºnicamente las medidas de media y desviaciÃ³n estÃ¡ndar de cada mediciÃ³n.
+* Extrae únicamente las medidas de media y desviación estándar de cada medición.
 
-Antes que nada, carga las etiquetas de cada variable, asÃ­ que despuÃ©s de 
-realizar esto nombra adecuadamente las columnas de "juntos", el anterior conjunto
-de datos. 
+Antes que nada, carga las etiquetas de cada variable, así después de realizar esto 
+nombra adecuadamente las columnas de "juntos", el anterior conjunto de datos. 
 
 ```etiquetas<-read.table("features.txt")
 colnames(juntos)<-etiquetas[,2]
@@ -52,14 +51,11 @@ njuntos<-subset(juntos, select = grepl(paste(patron, collapse = "|"),
                                            names(juntos)))
 rm(etiquetas,patron,juntos)
 ```
-Ahora crea un vector que indicarÃ¡ los valores que se desean encontrar.
-Utiliza asÃ­ grepl; funciÃ³n que nos permite hallar patrones. Junto con subset
-"juntos" (actual conjunto de datos) se reducirÃ¡ Ãºnicamente a las medidas
-de media y desviaciÃ³n estÃ¡ndar de cada mediciÃ³n.
+Ahora crea un vector que indicará los valores que se desean encontrar. Utiliza así grepl; función que nos permite hallar patrones. Junto con subset "juntos" (actual conjunto de datos) se reducirá únicamente a las medidas de media y desviación estándar de cada medición.
 
-Remueve elementos que ya no serÃ¡n de utilidad. 
+Remueve elementos que ya no serán de utilidad. 
 
-*Coloca etiquetas apropiadas en la base de datos con nombres de variables que las describan.
+* Coloca etiquetas apropiadas en la base de datos con nombres de variables que las describan.
 
 ```
 colnames(njuntos) <- sub("mean", "Mean", colnames(njuntos))
@@ -77,10 +73,10 @@ colnames(njuntos) <- sub("^", "MeanOf", colnames(njuntos))
 colnames(njuntos) <- sub("-", "", colnames(njuntos))
 ```
 
-*Usa nombres de actividad para describir los nombres de las actividades en la base de datos.
+* Usa nombres de actividad para describir los nombres de las actividades en la base de datos.
 
-Primero carga datos de train y test sobre la actividad, despuÃ©s de unirlos,
-se le otorga un factor, con niveles de 1 a 6. A continuaciÃ³n, cambia el 
+Primero carga datos de train y test sobre la actividad, después de unirlos,
+se le otorga un factor, con niveles de 1 a 6. A continuación, cambia el 
 nombre de cada nivel y se agrega como una nueva columna a un conjunto de datos 
 actualizado.
 
@@ -97,11 +93,13 @@ njuntos2<-cbind(nactividad,njuntos)
 
 ```
 
-*Con los datos del paso anterior, crea una segunda base de datos independiente con el promedio de cada variable para cada actividad y cada sujeto.
+* Con los datos del paso anterior, crea una segunda base de datos independiente 
+con el promedio de cada variable para cada actividad y cada sujeto.
 
-Se agrega la informaciÃ³n de los sujetos, uniendo lo de test y training en uno solo. AsÃ­ se vuelve a agregar como columna al conjunto de datos. 
-DespuÃ©s se instala el paquete dplyr, que permite asÃ­ obtener el promedio de 
-cada variable y cada sujeto. 
+Se agrega la información de los sujetos, uniendo lo de test y training en uno solo. 
+Así se vuelve a agregar como columna al conjunto de datos. 
+Después se instala el paquete dplyr, que permite así obtener el promedio de cada variable 
+y cada sujeto. 
 
 ```sujetostrain<-read.table("./train/subject_train.txt")
 sujetostest<-read.table("./test/subject_test.txt")
