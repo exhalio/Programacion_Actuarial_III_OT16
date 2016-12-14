@@ -1,9 +1,18 @@
 ---
-title: "readme"
+title: "Caso 3: Reconocimiento de Actividad Humana con Celulares"
 author: "Sarah√≠ Romero"
 date: "14 de diciembre de 2016"
 output: pdf_document
 ---
+
+#BenemÈrita Universidad AutÛnoma de Puebla 
+##ProgramaciÛn Actuarial lll
+##Equipo: 
+
+*Ayala Vargas Daniela
+*Gatica Cabrera MarÌa del Carmen 
+*Reynaga Gil Daniel
+*Romero LÛpez SarahÌ 
 #Caso: Reconocimiento de Actividad Humana con Celulares
 
 #Introducci√≥n
@@ -14,9 +23,9 @@ Una mayor descripci√≥n de la base de datos y su recopilaci√≥n puede ser hallada 
 
 http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
-El prop√≥sito de este proyecto es demostrar mi habilidad para recolectar, trabajar y limpiar base de datos. El objetivo es preparar un conjunto ordenado de informaci√≥n que pueda ser trabajado en an√°lisis posteriores.
+El prop√≥sito de este proyecto es demostrar la habilidad para recolectar, trabajar y limpiar bases de datos. El objetivo es preparar un conjunto ordenado de informaci√≥n que pueda ser trabajado en an√°lisis posteriores.
 
-La base de datos hace lo siguiente:
+El cÛdigo correr_analisis.R hace lo siguiente:
 
 *Une los datos de test con los de training, para crear un solo conjunto de datos.
 
